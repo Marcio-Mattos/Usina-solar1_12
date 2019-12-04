@@ -58,11 +58,14 @@ def cadastrar_cliente(bancoDeDados):
                        str(cons_mensal_med) + '\t' + str(cons_dia) + '\t' + str(h_sol_pleno) + '\t' + str(pot_instal) + '\n')
 
     bancoHandler.close()
+    
+    print('*'*55)
 
     input("Digite enter quando quiser voltar pro menu principal")
 
     os.system("cls")
-
+    
+    print('*'*55)
 
 def consulta_cadastro(bancoDeDados):
     
@@ -150,10 +153,14 @@ def consulta_cadastro(bancoDeDados):
             if (achou!=1):
 
                 print("\n!!!Cliente não cadastrado!!!\n")
+                
+    print('*'*55)
 
     input("Digite enter quando quiser voltar pro menu principal")
 
     os.system("cls")
+    
+    print('*'*55)
 
 def main():
     
