@@ -59,7 +59,19 @@ def cadastrar_cliente(bancoDeDados):
 
 def consulta_cadastro(bancoDeDados):
     
-    opcao = int(input('  Que tipo de consulta deseja fazer?\n 1) Completa.\n 2) Unica,\n >'))
+    valido=0 
+    
+    while(valido==0):
+        
+        try:
+            opcao = int(input('  Que tipo de consulta deseja fazer?\n 1) Completa.\n 2) Unica,\n >'))
+            
+            valido= 1
+
+        except:
+
+            print("\nDigite uma opção válida\n")
+
 
     if (opcao == 1):
 
@@ -94,6 +106,7 @@ def consulta_cadastro(bancoDeDados):
     if (opcao == 2):
 
         cliente = str(input('Cliente: '))
+        achou=0
 
         with open(bancoDeDados) as bancoHandler:
 
@@ -124,6 +137,12 @@ def consulta_cadastro(bancoDeDados):
                     print('Potência instalada: ' + linha[8], 'KWp.')
 
                     print('=' * 40)
+
+                    achou= 1
+
+            if (achou!=1):
+
+                print("\n!!!Cliente não cadastrado!!!\n")
 
 
 def main():
