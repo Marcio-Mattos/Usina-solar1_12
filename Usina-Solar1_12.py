@@ -1,3 +1,6 @@
+import os
+
+
 def cadastrar_cliente(bancoDeDados):
     
     cliente = input('Nome do cliente: ')
@@ -55,6 +58,10 @@ def cadastrar_cliente(bancoDeDados):
                        str(cons_mensal_med) + '\t' + str(cons_dia) + '\t' + str(h_sol_pleno) + '\t' + str(pot_instal) + '\n')
 
     bancoHandler.close()
+
+    input("Digite enter quando quiser voltar pro menu principal")
+
+    os.system("cls")
 
 
 def consulta_cadastro(bancoDeDados):
@@ -144,6 +151,9 @@ def consulta_cadastro(bancoDeDados):
 
                 print("\n!!!Cliente não cadastrado!!!\n")
 
+    input("Digite enter quando quiser voltar pro menu principal")
+
+    os.system("cls")
 
 def main():
     
@@ -183,6 +193,8 @@ def main():
 
         print('-' * 40)
 
+        os.system("cls")
+
         if op == 1:
             
             cadastrar_cliente(bancoDeDados)
@@ -193,7 +205,7 @@ def main():
 
         if op == 3:
 
-            sair = int(input('Deseja realmente sair?\n1)Sim.\n2)Não.'))
+            sair = int(input('Deseja realmente sair?\n1)Sim.\n2)Não.\n'))
 
             if sair == 1:
                 
