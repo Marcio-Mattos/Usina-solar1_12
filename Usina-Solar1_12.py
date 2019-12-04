@@ -103,7 +103,38 @@ def cadastrar_cliente():
                 print('Potência instalada: ' + linha[8], 'KWp.')
 
                 print('*' * 40)     
-            
+    if (opcao == 2):
+
+        cliente = str(input('Cliente: '))
+
+        with open(bancoDeDados) as bancoHandler:
+
+            for linha in bancoHandler:
+
+                if linha.find(cliente) != -1:
+                    print('=' * 40)
+
+                    linha = linha.strip('\n').split('\t')
+
+                    print('Cliente: ' + linha[0])
+
+                    print('Endereço: ' + linha[1])
+
+                    print('Número: ' + linha[2])
+
+                    print('Responsável técnico: ' + linha[3])
+
+                    print('Consumo anual: ' + linha[4], 'KWh.')
+
+                    print('Consumo mensal médio: ' + linha[5], 'KWh.')
+
+                    print('Consumo diário médio: ' + linha[6], 'KWh.')
+
+                    print('Horas de sol pleno: ' + linha[7])
+
+                    print('Potência instalada: ' + linha[8], 'KWp.')
+
+                    print('=' * 40)        
              
 
 def main():
