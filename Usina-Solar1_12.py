@@ -46,29 +46,14 @@ def cadastrar_cliente():
               
     print('Potência a ser instalada:',pot_instal, 'Kwp.')
 
-    arquivo = open('bancodedados.txt','a')
+    bancoHandler = open(bancoDeDados, 'a')
 
-    arquivo.write(cliente.title() +':') # grava primeiras letras em maiúscula
+    bancoHandler.write(
+        cliente + '\t' + endereco + '\t' + numero + '\t' + resp_tec + '\t' + str(cons_anual) + '\t' + str(
+            cons_mensal_med) + '\t' +
+        str(cons_dia) + '\t' + str(h_sol_pleno) + '\t' + str(pot_instal) + '\n')
 
-    arquivo.write(endereco.title() +':')# grava primeiras letras em maiúscula
-
-    arquivo.write(numero + ':')
-
-    arquivo.write(resp_tec.title() +':')# grava primeiras letras em maiúscula
-
-    arquivo.write(str(cons_anual) + ':')
-
-    arquivo.write(str(med_cons_mensal) + ':')
-    
-    arquivo.write(str(cons_dia) + ':')
-    
-    arquivo.write(str(h_sol_pleno) + ':')
-
-    arquivo.write(str(pot_instal) + '\n')
-
-    arquivo.close()
-
-    print()
+    bancoHandler.close()
 
 
 
