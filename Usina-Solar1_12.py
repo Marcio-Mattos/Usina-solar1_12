@@ -1,4 +1,5 @@
 def cadastrar_cliente(bancoDeDados):
+    
     cliente = input('Nome do cliente: ')
 
     endereco = input('Endereço: ')
@@ -6,8 +7,21 @@ def cadastrar_cliente(bancoDeDados):
     numero = input('Número: ')
 
     resp_tec = input('Responsál técnico: ')
+    
 
-    cons_anual = float(input('Informe o consumo anual em (Kwh): '))
+    while True:  # Tratamento de erro
+
+        try:
+
+            cons_anual = float(input('Informe o consumo anual em (Kwh): '))
+
+        except(ValueError, TypeError):
+
+            print('ERRO !! Digite números com (.) ou inteiro apenas.')
+
+        else:
+
+            break
 
     cons_mensal_med = round(cons_anual / 12, 2)  # arredonda 2 casas decimais
 
@@ -37,15 +51,14 @@ def cadastrar_cliente(bancoDeDados):
 
     bancoHandler = open(bancoDeDados, 'a')
 
-    bancoHandler.write(
-        cliente + '\t' + endereco + '\t' + numero + '\t' + resp_tec + '\t' + str(cons_anual) + '\t' + str(
-            cons_mensal_med) + '\t' +
-        str(cons_dia) + '\t' + str(h_sol_pleno) + '\t' + str(pot_instal) + '\n')
+    bancoHandler.write(cliente + '\t' + endereco + '\t' + numero + '\t' + resp_tec + '\t' + str(cons_anual) + '\t' +
+                       str(cons_mensal_med) + '\t' + str(cons_dia) + '\t' + str(h_sol_pleno) + '\t' + str(pot_instal) + '\n')
 
     bancoHandler.close()
 
 
 def consulta_cadastro(bancoDeDados):
+    
     opcao = int(input('  Que tipo de consulta deseja fazer?\n 1) Completa.\n 2) Unica,\n >'))
 
     if (opcao == 1):
@@ -53,6 +66,7 @@ def consulta_cadastro(bancoDeDados):
         with open(bancoDeDados) as bancoHandler:
 
             for linha in bancoHandler:
+                
                 print('*' * 40)
 
                 linha = linha.strip('\n').split('\t')
@@ -86,6 +100,7 @@ def consulta_cadastro(bancoDeDados):
             for linha in bancoHandler:
 
                 if linha.find(cliente) != -1:
+                    
                     print('=' * 40)
 
                     linha = linha.strip('\n').split('\t')
@@ -112,6 +127,7 @@ def consulta_cadastro(bancoDeDados):
 
 
 def main():
+    
     bancoDeDados = 'banco_de_dados.txt'
 
     while True:
@@ -137,6 +153,7 @@ def main():
                 op = int(input(' Opção: '))
 
                 if op == 1 or op == 2 or op == 3:
+                    
                     break
 
                 print('ERRO !! Digite apenas 1, 2, ou 3.')
@@ -148,9 +165,11 @@ def main():
         print('-' * 40)
 
         if op == 1:
+            
             cadastrar_cliente(bancoDeDados)
 
         if op == 2:
+            
             consulta_cadastro(bancoDeDados)
 
         if op == 3:
@@ -158,14 +177,14 @@ def main():
             sair = int(input('Deseja realmente sair?\n1)Sim.\n2)Não.'))
 
             if sair == 1:
+                
                 print('Até o próximo cliente !!')
 
                 break
 
             if sair == 2:
+                
                 False
 
 
 main()
-
-          
