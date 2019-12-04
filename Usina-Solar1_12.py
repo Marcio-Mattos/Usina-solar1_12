@@ -123,66 +123,58 @@ def cadastrar_cliente():
              
 
 def main():
+    bancoDeDados = 'banco_de_dados.txt'
 
     while True:
 
-        print('*'*40)
+        print('*' * 40)
 
         print('     Dimensionamento sistema solar')
 
-        print('*'*40)
+        print('*' * 40)
 
-        print('-'*40)
+        print('-' * 40)
 
         print('        Escolha uma das opções:\n 1) Cadastrar cliente,\n 2) Consultar cadastro.\n 3) Sair')
 
-        print('-'*40)
+        print('-' * 40)
 
-        op = 1000 
+        op = 1000
 
-        while op != 1 or op !=2 or op !=3: # Tratamento de erro
+        while op != 1 or op != 2 or op != 3:  # Tratamento de erro
 
             try:
 
                 op = int(input(' Opção: '))
 
-                if op == 1 or op ==2 or op ==3:
-
+                if op == 1 or op == 2 or op == 3:
                     break
 
+                print('ERRO !! Digite apenas 1, 2, ou 3.')
+
+            except:
 
                 print('ERRO !! Digite apenas 1, 2, ou 3.')
-            
-            except :
 
-                print('ERRO !! Digite apenas 1, 2, ou 3.')
-                
-
-        print('-'*40)    
+        print('-' * 40)
 
         if op == 1:
-
-            cadastrar_cliente()
+            cadastrar_cliente(bancoDeDados)
 
         if op == 2:
+            consulta_cadastro(bancoDeDados)
 
-            consulta_cadastro()
-
-            
         if op == 3:
 
             sair = int(input('Deseja realmente sair?\n1)Sim.\n2)Não.'))
 
             if sair == 1:
-
                 print('Até o próximo cliente !!')
 
                 break
 
             if sair == 2:
-
                 False
-                
 
 
 main()
