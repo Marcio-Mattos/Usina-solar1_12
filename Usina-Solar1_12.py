@@ -71,27 +71,38 @@ def cadastrar_cliente():
     print()
 
 
-   
-def consulta_cadastro():
 
+ def consulta_cadastro(bancoDeDados):
     opcao = int(input('  Que tipo de consulta deseja fazer?\n 1) Completa.\n 2) Unica,\n >'))
 
     if (opcao == 1):
 
-        arquivo = open ('bancodedados.txt').readlines()
+        with open(bancoDeDados) as bancoHandler:
 
-        arquivo = [str(x).rstrip() for x in arquivo] # "srt(x)" converte valores dentro do arquivo em valores exatos. "rstrip" remove espaços entre as linhas
+            for linha in bancoHandler:
+                print('*' * 40)
 
-        for linha in arquivo:
+                linha = linha.strip('\n').split('\t')
 
-            print(linha)
+                print('Cliente: ' + linha[0])
 
-        print()
+                print('Endereço: ' + linha[1])
 
-     
-    if (opcao == 2):
-         
-        print('Em fase de desenvolvimento')       
+                print('Número: ' + linha[2])
+
+                print('Responsável técnico: ' + linha[3])
+
+                print('Consumo anual: ' + linha[4], 'KWh.')
+
+                print('Consumo mensal médio: ' + linha[5], 'KWh')
+
+                print('Consumo diário médio: ' + linha[6], 'KWh.')
+
+                print('Horas de sol pleno: ' + linha[7])
+
+                print('Potência instalada: ' + linha[8], 'KWp.')
+
+                print('*' * 40)     
             
              
 
