@@ -1,34 +1,23 @@
-class BD: # verifica se a função já foi criada. Caso, sim, não criará novamente.
-
-    def cria_BD(cliente): # cria banco de dados
-
-        arquivo = open('bancodedados.txt','w')
-
-        arquivo.close()
-    
-
-def cadastrar_cliente():
-
+def cadastrar_cliente(bancoDeDados):
     cliente = input('Nome do cliente: ')
 
     endereco = input('Endereço: ')
 
     numero = input('Número: ')
-    
+
     resp_tec = input('Responsál técnico: ')
 
-    cons_anual = float(input('Informe o consumo anual em (Kwh): '))            
-   
-    med_cons_mensal = round(cons_anual/12,2)# arredonda 2 casas decimais   
-   
-    print('Média consumo mensal:',med_cons_mensal, 'Kwh.')
+    cons_anual = float(input('Informe o consumo anual em (Kwh): '))
 
-    cons_dia = round(med_cons_mensal/24,2)# arredonda 2 casas decimais
-    
-    print('Média consumo diário:',cons_dia, 'Kwh.')
-    
-    
-    while True: # Tratamento de erro
+    cons_mensal_med = round(cons_anual / 12, 2)  # arredonda 2 casas decimais
+
+    print('Média consumo mensal:', cons_mensal_med, 'Kwh.')
+
+    cons_dia = round(cons_mensal_med / 24, 2)  # arredonda 2 casas decimais
+
+    print('Média consumo diário:', cons_dia, 'Kwh.')
+
+    while True:  # Tratamento de erro
 
         try:
 
@@ -40,11 +29,11 @@ def cadastrar_cliente():
 
         else:
 
-            break        
+            break
 
-    pot_instal = round(cons_dia/h_sol_pleno,2)
-              
-    print('Potência a ser instalada:',pot_instal, 'Kwp.')
+    pot_instal = round(cons_dia / h_sol_pleno, 2)
+
+    print('Potência a ser instalada:', pot_instal, 'Kwp.')
 
     bancoHandler = open(bancoDeDados, 'a')
 
@@ -56,8 +45,7 @@ def cadastrar_cliente():
     bancoHandler.close()
 
 
-
- def consulta_cadastro(bancoDeDados):
+def consulta_cadastro(bancoDeDados):
     opcao = int(input('  Que tipo de consulta deseja fazer?\n 1) Completa.\n 2) Unica,\n >'))
 
     if (opcao == 1):
@@ -87,7 +75,8 @@ def cadastrar_cliente():
 
                 print('Potência instalada: ' + linha[8], 'KWp.')
 
-                print('*' * 40)     
+                print('*' * 40)
+
     if (opcao == 2):
 
         cliente = str(input('Cliente: '))
@@ -119,8 +108,8 @@ def cadastrar_cliente():
 
                     print('Potência instalada: ' + linha[8], 'KWp.')
 
-                    print('=' * 40)        
-             
+                    print('=' * 40)
+
 
 def main():
     bancoDeDados = 'banco_de_dados.txt'
@@ -178,6 +167,5 @@ def main():
 
 
 main()
-    
 
           
