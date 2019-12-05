@@ -82,49 +82,26 @@ def consulta_cadastro(bancoDeDados):
 
             print("\nDigite uma opção válida\n")
 
+    arq_banco= open(bancoDeDados,'a+')
+    arq_banco.seek(0,0)
 
-    if (opcao == 1):
+    if (arq_banco.readlines()==[]):
 
-        with open(bancoDeDados) as bancoHandler:
+        print("Nenhum projeto cadastrado")
 
-            for linha in bancoHandler:
+
+    else:
+
+        arq_banco.close()
+
+
+        if (opcao == 1):
+
+            with open(bancoDeDados) as bancoHandler:
+
+                for linha in bancoHandler:
                 
-                print('*' * 40)
-
-                linha = linha.strip('\n').split('\t')
-
-                print('Cliente: ' + linha[0])
-
-                print('Endereço: ' + linha[1])
-
-                print('Número: ' + linha[2])
-
-                print('Responsável técnico: ' + linha[3])
-
-                print('Consumo anual: ' + linha[4], 'KWh.')
-
-                print('Consumo mensal médio: ' + linha[5], 'KWh')
-
-                print('Consumo diário médio: ' + linha[6], 'KWh.')
-
-                print('Horas de sol pleno: ' + linha[7])
-
-                print('Potência instalada: ' + linha[8], 'KWp.')
-
-                print('*' * 40)
-
-    if (opcao == 2):
-
-        cliente = str(input('Cliente: '))
-        achou=0
-
-        with open(bancoDeDados) as bancoHandler:
-
-            for linha in bancoHandler:
-
-                if linha.find(cliente) != -1:
-                    
-                    print('=' * 40)
+                    print('*' * 40)
 
                     linha = linha.strip('\n').split('\t')
 
@@ -138,7 +115,7 @@ def consulta_cadastro(bancoDeDados):
 
                     print('Consumo anual: ' + linha[4], 'KWh.')
 
-                    print('Consumo mensal médio: ' + linha[5], 'KWh.')
+                    print('Consumo mensal médio: ' + linha[5], 'KWh')
 
                     print('Consumo diário médio: ' + linha[6], 'KWh.')
 
@@ -146,13 +123,51 @@ def consulta_cadastro(bancoDeDados):
 
                     print('Potência instalada: ' + linha[8], 'KWp.')
 
-                    print('=' * 40)
+                    print('*' * 40)
 
-                    achou= 1
+        elif (opcao == 2):
 
-            if (achou!=1):
+            cliente = str(input('Cliente: '))
+            achou=0
 
-                print("\n!!!Cliente não cadastrado!!!\n")
+            with open(bancoDeDados) as bancoHandler:
+
+                for linha in bancoHandler:
+
+                    if linha.find(cliente) != -1:
+                    
+                        print('=' * 40)
+
+                        linha = linha.strip('\n').split('\t')
+
+                        print('Cliente: ' + linha[0])
+
+                        print('Endereço: ' + linha[1])
+
+                        print('Número: ' + linha[2])
+
+                        print('Responsável técnico: ' + linha[3])
+
+                        print('Consumo anual: ' + linha[4], 'KWh.')
+
+                        print('Consumo mensal médio: ' + linha[5], 'KWh.')
+
+                        print('Consumo diário médio: ' + linha[6], 'KWh.')
+
+                        print('Horas de sol pleno: ' + linha[7])
+
+                        print('Potência instalada: ' + linha[8], 'KWp.')
+
+                        print('=' * 40)
+
+                        achou= 1
+
+                if (achou!=1):
+
+                    print("\n!!!Cliente não cadastrado!!!\n")
+
+
+    arq_banco.close()
                 
     print('*'*55)
 
