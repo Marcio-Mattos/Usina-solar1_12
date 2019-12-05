@@ -127,7 +127,7 @@ def consulta_cadastro(bancoDeDados):
 
         elif (opcao == 2):
 
-            cliente = str(input('Cliente: '))
+            cliente = str(input('Cliente, Endereço ou Responsável Técnico: '))
             achou=0
 
             with open(bancoDeDados) as bancoHandler:
